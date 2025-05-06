@@ -314,6 +314,7 @@ function attachModuleSymbols(doclets, modules) {
   })
 }
 
+// TODO: new nav 
 function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
   const subCategories = items.reduce((memo, item) => {
     const subCategory = item.subCategory || ''
@@ -444,6 +445,7 @@ function buildGroupNav (members, title) {
  * @return {string} The HTML for the navigation sidebar.
  */
 function buildNav(members, navTypes = null, betterDocs) {
+  debugger
   const href = betterDocs.landing ? 'docs.html' : 'index.html'
   var nav = navTypes ? '' : `<h2><a href="${href}">Documentation</a></h2>`
 
@@ -455,9 +457,6 @@ function buildNav(members, navTypes = null, betterDocs) {
   types.forEach(function(type) {
     if (!members[type]) { return }
     members[type].forEach(function(element) {
-      if (element.access && element.access === 'private') {
-        return
-      }
       if (element.category) {
         if (!categorised[element.category]){ categorised[element.category] = [] }
         if (!categorised[element.category][type]){ categorised[element.category][type] = [] }
