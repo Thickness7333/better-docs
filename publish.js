@@ -314,7 +314,7 @@ function attachModuleSymbols(doclets, modules) {
   })
 }
 
-// TODO: new nav 
+// TODO: filetree navbar
 function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
   const subCategories = items.reduce((memo, item) => {
     const subCategory = item.subCategory || ''
@@ -326,6 +326,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
   }, {})
 
   const subCategoryNames = Object.keys(subCategories)
+  debugger
     
   var nav = ''
 
@@ -366,13 +367,12 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
           itemsSeen[item.longname] = true
         }
       })
-            
       if (itemsNav !== '') {
         var heading = itemHeading
         if (subCategoryName) {
           heading = heading + ' / ' + subCategoryName
         }
-        nav += '<h3>' + heading + '</h3><ul>' + itemsNav + '</ul>'
+        nav += '<details><summary>' + heading + '</summary><ul>' + itemsNav + '</ul></details>'
       }
     }
   })
@@ -393,9 +393,9 @@ function buildGroupNav (members, title) {
   var seenTutorials = {}
   var nav = ''
   var seen = {}
-  nav += '<div class="category">'
+  nav += '<ul class="category">'
   if (title) {
-    nav += '<h2>' + title + '</h2>'
+    nav += '<summary>' + title + '</summary>'
   }
   nav += buildMemberNav(members.tutorials || [], 'Tutorials', seenTutorials, linktoTutorial)
   nav += buildMemberNav(members.modules || [], 'Modules', {}, linkto)
@@ -419,13 +419,13 @@ function buildGroupNav (members, title) {
 
     if (!globalNav) {
       // turn the heading into a link so you can actually get to the global page
-      nav += '<h3>' + linkto('global', 'Global') + '</h3>'
+      nav += '<summary>' + linkto('global', 'Global') + '<summary>'
     }
     else {
-      nav += '<h3>Global</h3><ul>' + globalNav + '</ul>'
+      nav += '<details closed><summary>Global</summary><ul>' + globalNav + '</ul></details>'
     }
   }
-  nav += '</div>'
+  nav += '</ul>'
   return nav
 }
 
