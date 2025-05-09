@@ -10,7 +10,7 @@ Changelog maintained after version 1.3.0
 
 ### Added
 
-- Added Support for Sencha ExtJS Tags (extjs plugin):
+- Added Support for Sencha ExtJS Tags (extjs.js plugin):
   - alias
   - alternateclassname
   - xtype
