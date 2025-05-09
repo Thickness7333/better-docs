@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Changelog maintained after version 1.3.0
 
+## Version v2.8.0 - 2025-05-09
+
+### Added
+
+- Added Support for Sencha ExtJS Tags (extjs plugin):
+  - alias
+  - alternateclassname
+  - xtype
+
 ## Version v2.0.1 - 2020-05-03
 
 ### Fixed
