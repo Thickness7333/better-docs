@@ -6,7 +6,6 @@ const {addAdditionalInfoToTitle} = require('./helpers/ownerDocletHelper.js');
 function addStaticToOwnerDoclet(doclet) {
     if (doclet && doclet.scope === 'static' && doclet.kind === 'class') {
         addAdditionalInfoToTitle(doclet, 'STATIC');
-        if(doclet.name === 'PortalSettings') debugger;
     }
 }
 

@@ -8,7 +8,6 @@ function addSingletonToOwnerDoclet(doclet) {
         const tag = doclet.tags.find((tag) => tag.title === 'singleton');
         if (tag) {
             addAdditionalInfoToTitle(doclet, 'SINGLETON');
-            if(doclet.name === 'PortalSettings') debugger;
         }
     }
 }
