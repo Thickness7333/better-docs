@@ -48,6 +48,10 @@
     <?js } ?>
     
     <div class="extjs-tags">
+        <?js if (doc.additionalInfo) { ?>
+            <p><strong><i><?js= doc.additionalInfo ?></i></strong></p>
+            <br/>
+        <?js } ?>
         <?js if (doc.xtype) { ?>
             <p><strong><i>xtype: <?js= doc.xtype ?></i></strong></p>
         <?js } ?>

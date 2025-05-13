@@ -1,5 +1,7 @@
 const {addAlternateclassnameToDoclet} = require('./extjs/alternateclassname.js')
 const {addXtypeToDoclet} = require('./extjs/xtype.js')
+const {addSingletonToOwnerDoclet} = require('./extjs/singleton.js')
+const {addStaticToOwnerDoclet} = require('./extjs/static.js')
 
 exports.handlers = {
     /**
@@ -13,5 +15,7 @@ exports.handlers = {
     newDoclet({ doclet }) {
         addAlternateclassnameToDoclet(doclet);
         addXtypeToDoclet(doclet);
+        addSingletonToOwnerDoclet(doclet);
+        addStaticToOwnerDoclet(doclet);
     },
 };
