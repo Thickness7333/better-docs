@@ -17,6 +17,10 @@ function getDefaultSearchResults(searchTargets) {
 }
 
 /**
+ * Filters the navitems by the searchpattern. 
+ * This function is triggered by the searchbars keyup-event
+ *
+ * @private
  * @param {Fuse} fuse 
  * @param {string} searchPattern 
  * @param {Array.<Object>} searchTargets 
@@ -66,6 +70,10 @@ function search(fuse, searchPattern, searchTargets, defaultSearchResults) {
   })
 }
 
+/**
+ * Initializes the search-functionality.
+ * @private
+ */
 function initSearch() {
   const input = document.querySelector('#search');
   const searchTargets = [ ...document.querySelectorAll('#sidebarNav li')];
