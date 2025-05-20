@@ -69,8 +69,7 @@ function search(fuse, searchPattern, searchTargets, defaultSearchResults) {
 function initSearch() {
   const input = document.querySelector('#search');
   const searchTargets = [ ...document.querySelectorAll('#sidebarNav li')];
-  const defaultSearchResults = getDefaultSearchResult(searchTargets);
-  debugger
+  const defaultSearchResults = getDefaultSearchResults(searchTargets);
 
   const fuseOptions = {
     isCaseSensitive: false,
@@ -78,6 +77,9 @@ function initSearch() {
     threshold: 0.2,
     keys: [
       'innerText',
+      'attributes.xtype.value',
+      'attributes.alias.value',
+      'attributes.alternateclassname.value'
     ]
   };
   
@@ -88,7 +90,7 @@ function initSearch() {
     debouncedSearch = setTimeout(() => {
       const searchPattern = input.value;
       search(fuse, searchPattern, searchTargets, defaultSearchResults);
-    }, 500);
+    }, 300);
   })
 }
   

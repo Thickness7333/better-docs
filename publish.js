@@ -314,6 +314,16 @@ function attachModuleSymbols(doclets, modules) {
   })
 }
 
+function buildLiOpeningTagWithDocletAttributes(item) {
+  const { xtype, alias, alternateclassname } = item;
+  const xtypeAttribute =  xtype ? `xtype="${xtype}"`: '';
+  const aliasAttribute = alias ? `alias="${alias}"`: '';
+  const alternateclassnameAttribute = alternateclassname ? `alternateclassname="${alternateclassname}"` : '';
+
+  const liTag = `<li ${xtypeAttribute} ${aliasAttribute} ${alternateclassnameAttribute}>`;
+  return liTag;
+}
+
 // TODO: new nav 
 function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
   const subCategories = items.reduce((memo, item) => {
@@ -336,9 +346,11 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
     
       subCategoryItems.forEach(function(item) {
         var displayName
-    
+
+      const li = buildLiOpeningTagWithDocletAttributes(item);
+        
         if ( !hasOwnProp.call(item, 'longname') ) {
-          itemsNav += '<li>' + linktoFn('', item.name) + '</li>'
+          itemsNav += li + linktoFn('', item.name) + '</li>'
         }
         else if ( !hasOwnProp.call(itemsSeen, item.longname) ) {
           if (env.conf.templates.default.useLongnameInNav) {
@@ -346,7 +358,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
           } else {
             displayName = item.name
           }
-          itemsNav += '<li>' + linktoFn(item.longname, displayName.replace(/\b(module|event):/g, ''))
+          itemsNav += li + linktoFn(item.longname, displayName.replace(/\b(module|event):/g, ''))
 
           if (item.children && item.children.length) {
             itemsNav += '<ul>'
@@ -356,7 +368,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
               } else {
                 displayName = child.name
               }
-              itemsNav += '<li>' + linktoFn(child.longname, displayName.replace(/\b(module|event):/g, '')) + '</li>'
+              itemsNav += li + linktoFn(child.longname, displayName.replace(/\b(module|event):/g, '')) + '</li>'
             })
             itemsNav += '</ul>'
           }
@@ -412,7 +424,9 @@ function buildGroupNav (members, title) {
 
     members.globals.forEach(function(g) {
       if ( g.kind !== 'typedef' && !hasOwnProp.call(seen, g.longname) ) {
-        globalNav += '<li>' + linkto(g.longname, g.name) + '</li>'
+        const li = buildLiOpeningTagWithDocletAttributes(g);
+
+        globalNav += li + linkto(g.longname, g.name) + '</li>'
       }
       seen[g.longname] = true
     })
