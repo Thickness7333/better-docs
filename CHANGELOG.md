@@ -6,6 +6,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Changelog maintained after version 1.3.0
 
+## Version v.2.10.1 - 2025-05-21
+
+### Updated
+
+- Updated changelog
+
+## Version v.2.10.0 - 2025-05-20
+
+### Added
+
+- Improved search performance and added search-support for xtype alias and alternate classname
+
+## Version v.2.9.1 - 2025-05-13
+
+### Fixed
+
+- Removed debugger
+
+## Version v.2.9.0 - 2025-05-13
+
+### Added
+
+- Added support for static and singleton classes
+
 ## Version v2.8.0 - 2025-05-09
 
 ### Added
